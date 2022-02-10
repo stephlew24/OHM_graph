@@ -1,0 +1,29 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: OHM_V2
+    network: mainnet
+    source:
+      address: "0x64aa3364F17a4D01c6f1751Fd97C2BD3D7e7f1D5"
+      abi: OHM_V2
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - AuthorityUpdated
+        - Transfer
+      abis:
+        - name: OHM_V2
+          file: ./abis/OHM_V2.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: AuthorityUpdated(indexed address)
+          handler: handleAuthorityUpdated
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts
