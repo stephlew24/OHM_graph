@@ -1,6 +1,59 @@
-type ExampleEntity @entity {
+# Create table schema
+
+type Transaction @entity {
   id: ID!
-  count: BigInt!
-  owner: Bytes! # address
-  spender: Bytes! # address
+  contract: String!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+  blockHash: String!
+  from: String!
+  to: String!
+  amount: BigDecimal!
+}
+
+enum AccountStatus {
+  OPEN,
+  CLOSED
+}
+
+type Account @entity {
+  id: ID!
+  ohmBalance: BigDecimal!
+  gohmBalance: BigDecimal!
+  sohmBalance: BigDecimal!
+  dateCreated: BigInt!
+  accountStatus: AccountStatus!
+  dateClosed: BigInt
+  ohmPurchases: BigInt!
+  ohmSales: BigInt!
+  gohmPurchases: BigInt!
+  gohmSales: BigInt!
+  sohmStakes: BigInt!
+  sohmUnstakes: BigInt!
+}
+
+type Contract @entity {
+  id: ID!
+}
+
+# type Stake @entity {
+#   id: ID!
+#   timestamp: BigInt!
+#   transaction: Transaction!
+#   amount: BigDecimal!
+# }
+
+# type Unstake @entity {
+#   id: ID!
+#   timestamp: BigInt!
+#   transaction: Transaction!
+#   amount: BigDecimal!
+# }
+
+type Token @entity {
+  id: ID!
+  name: String!
+  symbol: String!
+  decimal: String!
+  totalSupply: BigDecimal!
 }

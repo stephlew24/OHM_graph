@@ -1,0 +1,8 @@
+node_modules/
+generated/
+build/
+.vscode
+.idea
+.js
+.yarn
+data/ipfs

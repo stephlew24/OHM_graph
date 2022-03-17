@@ -1,6 +1,7 @@
 {
   "name": "ohm",
-  "license": "UNLICENSED",
+  "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
